@@ -80,7 +80,6 @@ def run(episodes, is_training=False,render=False,is_slippery=False):
             new_state, reward, terminated, truncated, _ = env.step(action)
 
             # Q-learning equation (Bellman equation)
-            # q(s, a) = q(s, a) + alpha * (reward for taking step + gamma * max(q(s', for all a in the Action Space)))
             if is_training:
                 q[state, action] = q[state, action] + learning_rate_a * (
                     reward + discount_factor_g * np.max(q[new_state, :]) - q[state, action]
